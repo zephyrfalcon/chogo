@@ -1,0 +1,22 @@
+# TODO
+
+- Stuff we need soon:
+  - PRINT (user-friendly printing)
+  - REPEAT
+  - something to define variables (MAKE?)
+    (may be a special form; we'd also have a non-special form for these things,
+     but that's uglier)
+  - symbol literals?
+  - return statement (OUTPUT in Apple Logo?)
+  - EVAL (esp. on lists that contain variable names)
+  - IF (functional style)
+
+- Once that is done:
+  - Tk interface
+  - bunch of usual Logo commands: FORWARD, RIGHT, etc
+
+- Things that won't be the same as Apple Logo:
+  - SUM takes a list, not two numbers
+  - no operator precedence; in fact, there are no operators
+  - no difference between commands and operations
+  - Chogo does have strings, not just symbols

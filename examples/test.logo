@@ -1,0 +1,11 @@
+;; test.logo
+
+to draw-square :size [
+   repeat 4 [
+       fd :size rt 90
+   ]
+]
+
+to say-hello :name [
+  say ["Hello, " :name "!" newline]
+]
