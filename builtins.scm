@@ -37,6 +37,9 @@
     (alf 'print 1
          (lambda (env fenv args)
            (logo-print (car args))))
+    (alf 'show 1
+         (lambda (env fenv args)
+           (printf "~a~%" (car args))))
 
     (alf 'true 0 (lambda (env fenv args) #t))
     (alf 'false 0 (lambda (env fenv args) #f))
