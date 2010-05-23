@@ -48,6 +48,9 @@
     (alf 'true 0 (lambda (env fenv args) #t))
     (alf 'false 0 (lambda (env fenv args) #f))
 
+    (alf 'eval 1 (lambda (env fenv args)
+                   (logo-eval-exprs (car args) env fenv)))
+
     ;; special form: TO
     (alf 'to 3
          (lambda (env fenv args)
