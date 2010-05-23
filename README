@@ -4,3 +4,14 @@ Forthcoming:
 
 A Logo interpreter written in Chicken Scheme.
 
+
+:: REQUIREMENTS
+
+- Chicken Scheme, obviously. ;-) Current version used for development
+  is 4.4.0. Other versions may or may not work.
+
+- Eggs:
+  - miscmacros
+  - args
+  - tk (if you want turtle graphics)
+
