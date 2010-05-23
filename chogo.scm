@@ -2,7 +2,7 @@
 ;; Tiny Logo interpreter written in Chicken Scheme.
 
 ;; make things case-insensitive, which is the default for Scheme (and
-;; Logo but not for Chicken
+;; Logo) but not for Chicken
 (case-sensitive #f)
 
 (use srfi-1)
@@ -40,6 +40,8 @@
          ;; special forms
          ((equal? func 'to)
           (gather-to-statement (cdr exprs)))
+         ((equal? func 'make)
+          (gather-make-statement (cdr exprs) fenv))
 
          ;; regular functions
          (else
@@ -70,6 +72,16 @@
                 (error "Invalid TO statement: no block"))))
         (error "Invalid TO statement: function name" names))))
 
+(define (gather-make-statement exprs fenv)
+  ;; a variable name
+  ;; any normal expression for the value
+  (let ((var-name (car exprs)))
+    (if (logo-variable? var-name)
+        (receive (stmt rest-exprs) (gather-argument (cdr exprs) fenv)
+          (values (make-statement (list 'make var-name stmt))
+                  rest-exprs))
+        (error "Invalid MAKE statement: needs variable name"))))
+
 (define-record-printer statement
   (lambda (stmt port)
     (fprintf port "{~a}" (to-string/remove-parens (statement-code stmt)))))
@@ -97,7 +109,7 @@
 ;;; --- evaluation of Logo expressions ---
 
 (define (logo-special-form? name)
-  (member name '(to)))
+  (member name '(to make)))
 
 (define (logo-variable? exp)
   (and (symbol? exp)

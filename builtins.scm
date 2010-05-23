@@ -41,6 +41,10 @@
          (lambda (env fenv args)
            (printf "~a~%" (car args))))
 
+    (alf 'interpolate 1
+         (lambda (env fenv args)
+           (logo-interpolate (car args) env fenv)))
+
     (alf 'true 0 (lambda (env fenv args) #t))
     (alf 'false 0 (lambda (env fenv args) #f))
 
@@ -56,4 +60,13 @@
                                block)))
                (namespace-define! fenv name logo-func)))))
 
+    ;; special form: MAKE
+    (alf 'make 2
+         (lambda (env fenv args)
+           (let ((name (strip-var-name (first args)))
+                 (value (second args)))
+             (namespace-define! env name value))))
+
     #t))
+
+;; TODO: add aliases
