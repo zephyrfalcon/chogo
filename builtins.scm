@@ -1,5 +1,7 @@
 ;; builtins.scm
 
+(use miscmacros)
+
 (define-record logo-function
   name        ;; name of the function (a symbol)
   arity       ;; number of arguments (an integer >= 0)
@@ -22,7 +24,12 @@
     (alf 'say 1
          (lambda (env fenv args)
            (print (car args))))
-    (alf 'repeat 2 (lambda (env fenv args) ...))
+    (alf 'repeat 2
+         (lambda (env fenv args)
+           (dotimes (i (car args) (void))
+                    (logo-eval-exprs (second args) env fenv))))
+
+    ;; basic arithmetic
     (alf '+ 2 (lambda (env fenv args) (apply + args)))
     (alf '- 2 (lambda (env fenv args) (apply - args)))
     (alf '* 2 (lambda (env fenv args) (apply * args)))
