@@ -182,6 +182,7 @@
 (define (setup-logo-state)
   (let ((state (make-logo-state (create-namespace #f) (create-namespace #f))))
     (add-builtin-functions state)
+    (add-aliases state)
     state))
 
 (define (lookup-function name fenv)

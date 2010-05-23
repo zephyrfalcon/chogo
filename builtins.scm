@@ -19,8 +19,9 @@
          (alf (lambda (name arity f) ;-)
                 (add-logo-function fenv name arity f))))
 
-    (alf 'fd 1 (lambda (env fenv args) ...))
-    (alf 'rt 1 (lambda (env fenv args) ...))
+    (alf 'forward 1 (lambda (env fenv args) ...))
+    (alf 'right 1 (lambda (env fenv args) ...))
+    (alf 'left 1 (lambda (env fenv args) ...))
     (alf 'say 1
          (lambda (env fenv args)
            (print (car args))))
@@ -72,4 +73,25 @@
 
     #t))
 
-;; TODO: add aliases
+;;; --- aliases ---
+
+;; first item in the list is the original function name, names after
+;; that are the aliases.
+(define *function-aliases*
+  '((forward fd)
+    (right rt)
+    (left lt)
+    (print pr)
+    (interpolate $ intp)))
+
+(define (add-aliases state)
+  (for-each
+   (lambda (lst)
+     (let ((original (car lst))
+           (aliases (cdr lst))
+           (fenv (logo-state-function-env state)))
+       (let ((f (namespace-get fenv original)))
+         (for-each (lambda (alias)
+                     (namespace-define! fenv alias (second f)))
+                   aliases))))
+   *function-aliases*))
