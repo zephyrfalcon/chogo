@@ -1,8 +1,9 @@
 ;; printing.scm
 
+;; FIXME: strings in lists need to be printed without quotes
 (define (logo-print x)
   (if (list? x)
-      (print (to-string/remove-parens x))
+      (print (to-string/remove-parens (map logo-human-repr x)))
       (printf "~a~%" x)))
 
 ;; TODO: human-readable vs machine-readable representations
@@ -13,6 +14,8 @@
     "true")
    ((eq? x #f)
     "false")
+   ((string? x)
+    x)
    (else
     (sprintf "~a" x))))
 

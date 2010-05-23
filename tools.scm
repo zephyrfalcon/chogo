@@ -1,7 +1,7 @@
 ;; tools.scm
 
 (define (to-string/remove-parens lst)
-  (let ((s (sprintf "~s" lst)))
+  (let ((s (sprintf "~a" lst)))
     (if (list? lst)
         (substring s 1 (- (string-length s) 1))
         s)))
