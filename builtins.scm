@@ -71,6 +71,11 @@
                  (value (second args)))
              (namespace-define! env name value))))
 
+    ;; turtle stuff
+    (alf 'canvas 2
+         (lambda (env fenv args)
+           (make-canvas (first args) (second args) 'white)))
+
     #t))
 
 ;;; --- aliases ---

@@ -9,6 +9,7 @@
 (define *canvas* #f)
 
 (define (make-canvas width height bgcolor)
+  (unless *canvas* (init-graphics))
   (set! *canvas* (tk 'create-widget 'canvas
                      #:height height #:width width #:bg bgcolor))
   (tk/pack *canvas* #:expand #t #:fill 'both))
