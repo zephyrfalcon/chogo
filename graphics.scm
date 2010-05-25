@@ -14,4 +14,7 @@
                      #:height height #:width width #:bg bgcolor))
   (tk/pack *canvas* #:expand #t #:fill 'both))
 
+;; XXX should we associate a turtle with each canvas?
+;; XXX turtle should go to middle of canvas by default
+;; XXX do we need to deallocate existing canvases?
 

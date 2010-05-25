@@ -9,8 +9,10 @@
   code        ;; list of sexps, -OR- a Scheme procedure for builtins
   )
 
+(define *logo-functions* (create-namespace #f))
+
 (define (add-logo-function fenv name arity f)
-  (namespace-define! fenv name
+  (namespace-define! *logo-functions* name
                      (make-logo-function name arity '() f)))
 
 (define (add-builtin-functions state)

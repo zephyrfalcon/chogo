@@ -188,7 +188,8 @@
   )
 
 (define (setup-logo-state)
-  (let ((state (make-logo-state (create-namespace #f) (create-namespace #f))))
+  (let ((state (make-logo-state (create-namespace #f)
+                                (create-namespace *logo-functions*))))
     (add-builtin-functions state)
     (add-aliases state)
     state))
