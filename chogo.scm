@@ -12,6 +12,14 @@
 (load "printing")
 ;; XXX create a file that loads all auxiliary modules
 
+;; for turtle graphics, we need the tk egg
+(if (extension-information 'tk)
+    (begin
+      (use tk)
+      (load "turtle.scm")
+      (load "graphics.scm"))
+    (printf "Warning: Tk graphics unavailable. Check if the tk egg is installed.~n"))
+
 (define (read-all-sexps port)
   (let loop ((sexps '()))
     (let ((sexp (read port)))
