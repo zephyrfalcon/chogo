@@ -11,76 +11,85 @@
 
 (define *logo-functions* (create-namespace #f))
 
-(define (add-logo-function fenv name arity f)
+(define (add-logo-function name arity f)
   (namespace-define! *logo-functions* name
                      (make-logo-function name arity '() f)))
 
-(define (add-builtin-functions state)
-  (let* ((env (logo-state-toplevel-env state))
-         (fenv (logo-state-function-env state))
-         (alf (lambda (name arity f) ;-)
-                (add-logo-function fenv name arity f))))
+;;; --- macros ---
 
-    (alf 'forward 1 (lambda (env fenv args) ...))
-    (alf 'right 1 (lambda (env fenv args) ...))
-    (alf 'left 1 (lambda (env fenv args) ...))
-    (alf 'say 1
-         (lambda (env fenv args)
-           (print (car args))))
-    (alf 'repeat 2
-         (lambda (env fenv args)
-           (dotimes (i (car args) (void))
-                    (logo-eval-exprs (second args) env fenv))))
+;; Macro(s) for easy definition of Logo functions. Unhygienic, but we
+;; want it that way. ;-) (The idea is that we can still refer to ENV
+;; and FENV from within the Logo function's body.)
 
-    ;; basic arithmetic
-    (alf '+ 2 (lambda (env fenv args) (apply + args)))
-    (alf '- 2 (lambda (env fenv args) (apply - args)))
-    (alf '* 2 (lambda (env fenv args) (apply * args)))
+;; (car exp)   = define-logo-function
+;; (cadr exp)  = (name . arglist)
+;; (caadr exp) = name
+;; (cdadr exp) = arglist
+;; (cddr exp)  = body (as a list)
+(define-syntax define-logo-function
+  (lambda (exp ren cmp)
+    (list 'add-logo-function
+          (list 'quote (caadr exp))
+          (length (cdadr exp))
+          (list 'lambda '(env fenv args)
+                (list 'apply (cons* 'lambda (cdadr exp) (cddr exp))
+                      'args)))))
 
-    (alf 'print 1
-         (lambda (env fenv args)
-           (logo-print (car args))))
-    (alf 'show 1
-         (lambda (env fenv args)
-           (printf "~a~%" (car args))))
+;;; --- Built-in Logo functions. ---
 
-    (alf 'interpolate 1
-         (lambda (env fenv args)
-           (logo-interpolate (car args) env fenv)))
+(define-logo-function (repeat n block)
+  (dotimes (i n (void))
+           (logo-eval-exprs block env fenv)))
 
-    (alf 'true 0 (lambda (env fenv args) #t))
-    (alf 'false 0 (lambda (env fenv args) #f))
+(define-logo-function (+ a b)
+  (+ a b))
+(define-logo-function (- a b)
+  (- a b))
+(define-logo-function (* a b)
+  (* a b))
 
-    (alf 'eval 1 (lambda (env fenv args)
-                   (logo-eval-exprs (car args) env fenv)))
+(define-logo-function (say x)
+  (print x))
+(define-logo-function (print x)
+  (logo-print x))
+(define-logo-function (show x)
+  (printf "~a~%" x))
 
-    ;; special form: TO
-    (alf 'to 3
-         (lambda (env fenv args)
-           (let ((name (first args))
-                 (var-names (second args))
-                 (block (third args)))
-             (let ((logo-func (make-logo-function
-                               name (length var-names)
-                               (map strip-var-name var-names)
-                               block)))
-               (namespace-define! fenv name logo-func)))))
+(define-logo-function (interpolate x)
+  (logo-interpolate x env fenv))
 
-    ;; special form: MAKE
-    (alf 'make 2
-         (lambda (env fenv args)
-           (let ((name (strip-var-name (first args)))
-                 (value (second args)))
-             (namespace-define! env name value))))
+(define-logo-function (true) #t)
+(define-logo-function (false) #f)
 
-    ;; turtle stuff
-    (alf 'canvas 2
-         (lambda (env fenv args)
-           (make-canvas (first args) (second args) 'white)))
+(define-logo-function (eval block)
+  (logo-eval-exprs block env fenv))
 
-    #t))
+;; special form: TO
+(define-logo-function (to name args body)
+  (let ((logo-func
+         (make-logo-function
+          name (length args)
+          (map strip-var-name args)
+          body)))
+    (namespace-define! fenv name logo-func)))
+
+;; special form: MAKE
+(define-logo-function (make var-name value)
+  (namespace-define! env (strip-var-name var-name) value))
+
+;; turtle stuff (should be moved to separate file and loaded conditionally)
+(define-logo-function (canvas width height)
+  (make-canvas width height 'white))
+
+(define-logo-function (forward dist) ...)
+(define-logo-function (right angle) ...)
+(define-logo-function (left angle) ...)
 
 ;;; --- aliases ---
+
+;; NOTE: This only works if the original function has already been
+;; defined, of course. So we should do this *after* loading turtle
+;; stuff and everything.
 
 ;; first item in the list is the original function name, names after
 ;; that are the aliases.
