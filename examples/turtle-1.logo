@@ -1,0 +1,7 @@
+;; turtle-1.logo
+;; -*- Mode: Logo -*-
+
+canvas 400 400
+forward 50
+
+keep-open

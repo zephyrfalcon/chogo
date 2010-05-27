@@ -1,6 +1,7 @@
 ;; test-macros.scm
+;; Not a real test case... merely prints out some macroexpansions.
 
-(load "chogo.scm")
+(load "chogo.scm") ;; load everything
 
 (pretty-print
  (expand

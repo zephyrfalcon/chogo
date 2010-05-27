@@ -1,0 +1,12 @@
+;; turtle-2.logo
+
+to square :size [
+   repeat 4 [
+       forward :size
+       right 90
+   ]]
+
+canvas 400 400
+square 100
+
+keep-open

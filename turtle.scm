@@ -27,9 +27,9 @@
   (let* ((p1 (turtle-position turtle))
          (angle (turtle-direction turtle))
          (p2 (list (+ (first p1) (* (sin (* angle deg)) distance))
-                   (+ (second p1) (* cos (* angle deg)) distance))))
+                   (+ (second p1) (* (cos (* angle deg)) distance)))))
     (when (turtle-pen-down? turtle)
-      (draw-line turtle canvas p1 p2)) ;; TBI
+      (draw-line *canvas* p1 p2)) ;; TODO: add color, etc.
     (turtle-position-set! turtle p2)))
 
 (define (turtle-backward turtle distance)
