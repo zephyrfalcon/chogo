@@ -38,8 +38,10 @@
 ;;; --- Built-in Logo functions. ---
 
 (define-logo-function (repeat n block)
-  (dotimes (i n (void))
-           (logo-eval-exprs block env fenv)))
+  (if (< n 0)
+      (while #t (logo-eval-exprs block env fenv)) ;; infinite loop
+      (dotimes (i n (void))
+               (logo-eval-exprs block env fenv))))
 
 (define-logo-function (+ a b)
   (+ a b))
@@ -77,6 +79,7 @@
 (define-logo-function (make var-name value)
   (namespace-define! env (strip-var-name var-name) value))
 
+(define-logo-function (forever) -1)
 
 ;;; --- aliases ---
 
