@@ -5,11 +5,12 @@
   direction
   pen-down?
   color
+  width
   )
 
 (define (setup-turtle)
   "Set up a default turtle."
-  (make-turtle '(0 0) 0 #t '(0 0 0)))
+  (make-turtle '(0 0) 0 #t '(0 0 0) 1))
 
 (define math:pi (atan 0 -1))
 (define deg (/ math:pi 180))
@@ -29,7 +30,8 @@
          (p2 (list (+ (x-of p1) (* (sin (* angle deg)) distance))
                    (- (y-of p1) (* (cos (* angle deg)) distance)))))
     (when (turtle-pen-down? turtle)
-      (draw-line *canvas* p1 p2)) ;; TODO: add color, etc.
+      (draw-line *canvas* p1 p2
+                 (turtle-color *turtle*) (turtle-width *turtle*)))
     (turtle-position-set! turtle p2)))
 
 (define (turtle-backward turtle distance)

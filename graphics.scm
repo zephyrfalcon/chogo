@@ -22,9 +22,9 @@
 ;; XXX do we need to deallocate existing canvases?
 
 ;; TODO: color, thickness of line, maybe kind of line, etc
-(define (draw-line canvas p1 p2)
+(define (draw-line canvas p1 p2 color width)
   (canvas 'create 'line (x-of p1) (y-of p1) (x-of p2) (y-of p2)
-          #:fill 'black))
+          #:fill color #:width width))
 
 ;;; --- Logo commands ---
 
@@ -32,9 +32,17 @@
   (make-canvas width height 'white))
 
 (define-logo-function (penup)
-  (turtle-pen-down?-set! #f))
+  (turtle-pen-down?-set! *turtle* #f))
 (define-logo-function (pendown)
-  (turtle-pen-down?-set! #t))
+  (turtle-pen-down?-set! *turtle* #t))
+(define-logo-function (penwidth size)
+  (turtle-width-set! *turtle* size))
+
+;; accepts strings and symbols that name a color or RGB value,
+;; e.g. "black", "#800080"
+;; TODO: accept (r g b) lists as well
+(define-logo-function (pencolor color)
+  (turtle-color-set! *turtle* color))
 
 (define-logo-function (forward distance)
   (turtle-forward *turtle* distance))

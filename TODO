@@ -4,7 +4,7 @@
   - symbol literals?
   - return statement (OUTPUT in Apple Logo?)
   - IF (functional style)
-  - LOAD "filename"
+  - better error handling at the REPL (e.g. a syntax error should not be fatal)
 
 - Also:
   - more math stuff
@@ -12,8 +12,9 @@
 
 - Graphics:
   - Draw a turtle
-  - Colors, line thickness, line style, etc.
+  - More options for lines, e.g. styles (dashed, etc)
   - We might need a command to refresh the Tk window while drawing.
+  - PENCOLOR should accept (r g b) lists
 
 - Logo commands taken from Apple Logo:
   - CLEARSCREEN (CS)
