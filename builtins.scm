@@ -95,6 +95,7 @@
 ;; that are the aliases.
 (define *function-aliases*
   '((forward fd)
+    (backward back)
     (right rt)
     (left lt)
     (print pr)

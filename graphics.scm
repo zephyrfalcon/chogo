@@ -17,17 +17,14 @@
   (set! *turtle* (setup-turtle))
   (turtle-position-set! *turtle* (list (/ width 2) (/ height 2))))
 
-(define x-of first)
-(define y-of second)
 
 ;; XXX should we associate a turtle with each canvas?
-;; XXX turtle should go to middle of canvas by default
 ;; XXX do we need to deallocate existing canvases?
 
-;; TODO: color, etc
+;; TODO: color, thickness of line, maybe kind of line, etc
 (define (draw-line canvas p1 p2)
   (canvas 'create 'line (x-of p1) (y-of p1) (x-of p2) (y-of p2)
-            #:fill 'black))
+          #:fill 'black))
 
 ;;; --- Logo commands ---
 

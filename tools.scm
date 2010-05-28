@@ -11,3 +11,7 @@
     (if (string-prefix? ":" s)
         (string->symbol (substring s 1))
         s)))
+
+;; simple point accessors (where a point is a list of 2 numbers ;-)
+(define x-of first)
+(define y-of second)

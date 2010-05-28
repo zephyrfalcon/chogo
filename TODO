@@ -1,19 +1,36 @@
 # TODO
 
-- Stuff we need soon:
-  - PRINT (user-friendly printing)
-  - REPEAT
-  - something to define variables (MAKE?)
-    (may be a special form; we'd also have a non-special form for these things,
-     but that's uglier)
+- Stuff we need soon, language-wise:
   - symbol literals?
   - return statement (OUTPUT in Apple Logo?)
-  - EVAL (esp. on lists that contain variable names)
   - IF (functional style)
 
-- Once that is done:
-  - Tk interface
-  - bunch of usual Logo commands: FORWARD, RIGHT, etc
+- Also:
+  - more math stuff
+  - trig functions: SIN, COS, etc. Maybe.
+
+- Graphics:
+  - Draw a turtle
+  - Colors, line thickness, line style, etc.
+
+- Logo commands taken from Apple Logo:
+  - CLEARSCREEN (CS)
+  - HIDETURTLE, SHOWTURTLE
+  - HOME
+  - SETHEADING degrees
+  - SETPOS x y
+  - SETX x, SETY y
+  - HEADING
+  - POS
+  - TOWARDS x y
+  - XCOR, YCOR
+  - CLEAN
+  - DOT x y
+  - FENCE, WINDOW, WRAP
+  - FILL
+  - maybe: PENERASE, PENREVERSE
+  - SETCOLOR
+
 
 - Things that won't be the same as Apple Logo:
   - SUM takes a list, not two numbers
