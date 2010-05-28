@@ -81,6 +81,13 @@
 
 (define-logo-function (forever) -1)
 
+(define-logo-function (load filename)
+  (with-input-from-file filename
+    (lambda ()
+      (let ((sexps (read-all-sexps (current-input-port))))
+        (logo-eval-exprs sexps env fenv)))))
+             
+
 ;;; --- aliases ---
 
 ;; NOTE: This only works if the original function has already been

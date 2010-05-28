@@ -1,0 +1,33 @@
+;; thing.logo
+;; Turtle Geometry, p. 9
+
+to thing [
+   fd 100 rt 90
+   fd 100 rt 90
+   fd 50 rt 90
+   fd 50 rt 90
+   fd 100 rt 90
+   fd 25 rt 90
+   fd 25 rt 90
+   fd 50
+]
+
+to thing1 [
+   repeat 4 [thing]
+]
+
+to thing2 [
+   repeat forever [
+       thing
+       right 10
+       forward 50
+   ]
+]
+
+to thing3 [
+   repeat forever [
+       thing
+       left 45
+       forward 100
+   ]
+]
