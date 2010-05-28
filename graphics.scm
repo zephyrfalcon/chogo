@@ -42,6 +42,7 @@
 (define-logo-function (left degrees)
   (turtle-left *turtle* degrees))
 
-;; temporary... I think...
+;; KEEP-OPEN: when run in non-interactive mode, has the effect of
+;; keeping the Tk window open when the program is done.
 (define-logo-function (keep-open)
   (event-loop))

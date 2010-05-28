@@ -12,6 +12,7 @@
 - Graphics:
   - Draw a turtle
   - Colors, line thickness, line style, etc.
+  - We might need a command to refresh the Tk window while drawing.
 
 - Logo commands taken from Apple Logo:
   - CLEARSCREEN (CS)
