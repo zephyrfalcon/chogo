@@ -28,6 +28,9 @@
 
 ;;; --- Logo commands ---
 
+(define-logo-function (canvas width height)
+  (make-canvas width height 'white))
+
 (define-logo-function (penup)
   (turtle-pen-down?-set! #f))
 (define-logo-function (pendown)

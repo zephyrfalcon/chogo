@@ -77,13 +77,6 @@
 (define-logo-function (make var-name value)
   (namespace-define! env (strip-var-name var-name) value))
 
-;; turtle stuff (should be moved to separate file and loaded conditionally)
-(define-logo-function (canvas width height)
-  (make-canvas width height 'white))
-
-(define-logo-function (forward dist) ...)
-(define-logo-function (right angle) ...)
-(define-logo-function (left angle) ...)
 
 ;;; --- aliases ---
 

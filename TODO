@@ -4,6 +4,7 @@
   - symbol literals?
   - return statement (OUTPUT in Apple Logo?)
   - IF (functional style)
+  - LOAD "filename"
 
 - Also:
   - more math stuff
