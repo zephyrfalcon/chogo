@@ -1,19 +1,74 @@
++-------+---+   +-------+-------+-------+
+|       |   |   |       |       |       |
+|  +-+  |   +---+  +-+  |  +----+  +-+  |
+|  | +--+       |  | |  |  |    |  | |  |
+|  +-+  |   |   |  +-+  |  +--  |  +-+  |
+|       |   |   |       |       |       |
++-------+---+   +-------+-------+-------+
+            +---+ 
+
+
 Chicken + Logo = Chogo!
 
-Forthcoming: 
-
-A Logo interpreter written in Chicken Scheme.
-
-Current status: Very much a work in progress. Not usable yet.
+Chogo is a Logo interpreter written in Chicken Scheme.
 
 
-:: REQUIREMENTS
+.[!].  CURRENT STATUS
+
+Very much a work in progress, but usable (if you know what you're doing ;-).
+
+
+.[!].   REQUIREMENTS
 
 - Chicken Scheme, obviously. ;-) Current version used for development
   is 4.4.0. Other versions may or may not work.
+  See: [http://www.call-with-current-continuation.org/]
 
 - Eggs:
   - miscmacros
   - args
   - tk (if you want turtle graphics)
+
+- rlwrap (optional, but useful if you want a readline-enabled REPL)
+  See: [http://utopia.knoware.nl/~hlub/rlwrap/]
+
+
+.[!].   RATIONALE
+
+I am writing Chogo for personal use; to learn more about language
+implementation, and to have a Logo interpreter that I can use with the
+book _Turtle_Geometry_. (Note that Chogo's syntax is *not* the same as
+the pseudocode used in the book, though. Much like all other Logo
+implementations, it has its own unique syntax. I will write more about
+this when/if the project matures a bit.)
+
+(See: Turtle Geometry: The Computer as a Medium for Exploring
+Mathematics, by Albelson & diSessa. [http://www.amazon.com/dp/0262510375])
+
+
+.[!].   QUICK START
+
+Assuming you have rlwrap installed, and you are on an Unixoid system,
+you can run the included 'chogo' script (which is really a one-line at
+the moment, but should become more intelligent in the future :-).
+
+Otherwise, just run chogo.scm with csi:
+
+  $ csi -ss chogo.scm
+
+Load and execute a file:
+
+  $ ./chogo <filename>
+
+or
+ 
+  $ csi -ss chogo.scm <filename>
+
+Create a new canvas for turtle drawing using the REPL, and start drawing:
+
+  > canvas 500 500
+  > forward 90
+
+(Currently the turtle itself is not displayed... like I said, it's
+very much a work in progress.)
 
