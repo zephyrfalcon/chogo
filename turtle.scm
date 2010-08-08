@@ -10,7 +10,7 @@
 
 (define (setup-turtle)
   "Set up a default turtle."
-  (make-turtle '(0 0) 0 #t '(0 0 0) 1))
+  (make-turtle '(0 0) 0 #t "black" 1))
 
 (define math:pi (atan 0 -1))
 (define deg (/ math:pi 180))
