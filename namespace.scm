@@ -4,6 +4,7 @@
 
 (use srfi-1)
 (use srfi-13) ;; for STRING<
+(use srfi-69) ;; no longer auto-imported in Chicken 4.6.0
 
 (define-record namespace
   parent   ;; parent namespace or #f
