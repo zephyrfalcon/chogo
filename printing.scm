@@ -9,20 +9,18 @@
 ;; TODO: human-readable vs machine-readable representations
 
 (define (logo-human-repr x)
-  (cond
-   ((eq? x #t)
-    "true")
-   ((eq? x #f)
-    "false")
-   ((string? x)
-    x)
-   (else
-    (sprintf "~a" x))))
+  (cond ((eq? x #t)
+         "true")
+        ((eq? x #f)
+         "false")
+        ((string? x)
+         x)
+        (else
+         (sprintf "~a" x))))
 
 (define (logo-interpolate x env fenv)
-  (cond
-   ((list? x)
-    (map (cut logo-interpolate <> env fenv) x))
-   ((logo-variable? x)
-    (lookup-variable x env))
-   (else x)))
+  (cond ((list? x)
+         (map (cut logo-interpolate <> env fenv) x))
+        ((logo-variable? x)
+         (lookup-variable x env))
+        (else x)))

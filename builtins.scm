@@ -76,6 +76,8 @@
     (namespace-define! fenv name logo-func)))
 
 ;; special form: MAKE
+;; Currently used like: ' make :foo 4 '
+;; Might be changed to take a symbol literal and/or a string.
 (define-logo-function (make var-name value)
   (namespace-define! env (strip-var-name var-name) value))
 
