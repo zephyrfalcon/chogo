@@ -1,0 +1,67 @@
+(Rough list of available commands/functions. Needs organized, cleaned up,
+etc... eventually.)
+
+CANVAS :x :y
+    Create a new canvas of size (x, y).
+
+PENUP
+    Lift the pen up, i.e. turtle moves don't leave a track.
+PENDOWN
+    Put the pen down, i.e. turtle moves leave a track (this is how you draw
+    lines).
+
+PENWIDTH :width
+    Set the line drawn by the turtle to :width pixels thick.
+
+FORWARD :distance
+BACKWARD :distance
+    Move the turtle for the given distance. These functions can be abbreviated
+    as FD and BACK.
+
+LEFT :angle
+RIGHT :angle
+    Change the direction the turtle is facing, by turning it left or right by
+    the specified number of degrees. Can be abbreviated as LT and RT.
+
+KEEP-OPEN
+    When the program is done, keep the canvas window open.
+
++ :a :b
+- :a :b
+* :a :b
+    Basic arithmetic.
+
+SAY :x
+    Display the given object.
+SHOW :x
+    Display the given object. [XXX explain difference]
+PRINT :x
+    Display the given object. [XXX ditto :-)]
+
+INTERPOLATE :list
+    Return a new list with variables evaluated.
+
+EVAL :code
+    Evaluate a block of code (must be a list).
+
+TO name [args...] code
+    Special form to define a new function.
+
+MAKE :name :value
+    Special form to define a new variable.
+    
+TRUE
+FALSE
+    Return 'true' and 'false' values, respectively. Note that these are
+    technically functions, but because they take no arguments, they could be
+    considered constants.
+
+LOAD :filename
+    Load and execute the given Logo file.
+
+REPEAT :times :code
+    Execute the given code block :times times.
+
+FOREVER
+    Constant, currently defined as -1. Used in 'REPEAT FOREVER [ ... ]'.
+
