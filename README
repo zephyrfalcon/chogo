@@ -40,7 +40,8 @@ implementation, and to have a Logo interpreter that I can use with the
 book _Turtle_Geometry_. (Note that Chogo's syntax is *not* the same as
 the pseudocode used in the book, though. Much like all other Logo
 implementations, it has its own unique syntax. I will write more about
-this when/if the project matures a bit.)
+this when/if the project matures a bit. There won't be *that* much of a
+difference, though.)
 
 (See: Turtle Geometry: The Computer as a Medium for Exploring
 Mathematics, by Albelson & diSessa. [http://www.amazon.com/dp/0262510375])
@@ -50,7 +51,7 @@ Mathematics, by Albelson & diSessa. [http://www.amazon.com/dp/0262510375])
 
 Assuming you have rlwrap installed, and you are on an Unixoid system,
 you can run the included 'chogo' script (which is really a one-liner at
-the moment, but should become more intelligent in the future :-).
+the moment, but should become more sophisticated in the future :-).
 
 Otherwise, just run chogo.scm with csi:
 
