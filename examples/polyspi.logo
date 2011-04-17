@@ -1,0 +1,17 @@
+;; polyspi.logo
+
+;; non-recursive version of polyspi
+to polyspi :side :angle :times [
+    repeat :times [
+        forward :side
+        right :angle
+        make :side + :side 1
+    ]
+]
+
+;; original version; won't finish
+to polyspi-original :side :angle [
+    forward :side
+    right :angle
+    polyspi-original + :side 1 :angle
+]
