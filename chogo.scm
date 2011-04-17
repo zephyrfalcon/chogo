@@ -1,4 +1,4 @@
-;; logo-1.scm
+;; chogo.scm
 ;; Tiny Logo interpreter written in Chicken Scheme.
 
 ;; make things case-insensitive, which is the default for Scheme (and

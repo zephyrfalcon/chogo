@@ -21,7 +21,7 @@ Very much a work in progress, but usable (if you know what you're doing ;-).
 .[!].   REQUIREMENTS
 
 - Chicken Scheme, obviously. ;-) Current version used for development
-  is 4.4.0. Other versions may or may not work.
+  is 4.6.0. Other versions may or may not work.
   See: [http://www.call-with-current-continuation.org/]
 
 - Eggs:
@@ -49,7 +49,7 @@ Mathematics, by Albelson & diSessa. [http://www.amazon.com/dp/0262510375])
 .[!].   QUICK START
 
 Assuming you have rlwrap installed, and you are on an Unixoid system,
-you can run the included 'chogo' script (which is really a one-line at
+you can run the included 'chogo' script (which is really a one-liner at
 the moment, but should become more intelligent in the future :-).
 
 Otherwise, just run chogo.scm with csi:
