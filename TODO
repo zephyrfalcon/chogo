@@ -6,6 +6,8 @@
   - IF (functional style)
   - better error handling at the REPL (e.g. a syntax error should not be fatal)
   - introspection (e.g. which words do we know, etc)
+  - figure out at which point the stack overflows... and if we should fix it,
+    and how.
 
 - Also:
   - more math stuff
@@ -16,6 +18,11 @@
   - More options for lines, e.g. styles (dashed, etc)
   - We might need a command to refresh the Tk window while drawing.
   - PENCOLOR should accept (r g b) lists
+  - We really need a canvas object (probably a record or something) to store
+    the canvas size in addition to the Tk window. (We need to know the
+    original size if we want to reliably calculate cartesian coordinates; they
+    should not change if the user resizes the window (and therefore the
+    canvas). ... Alternatively, we could prohibit resizing it. :-)
 
 - Write a short explanation of the syntax (and how it relates to Scheme
   syntax). (Coming back to this project less than a year after I started it,
