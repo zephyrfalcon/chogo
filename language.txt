@@ -1,0 +1,58 @@
+(Very rough draft. Heck, it's not even a draft. It's just an unorganized bunch
+of short notes, so that when I come back later, I kind of can figure out what
+I was doing.)
+
+The Chogo language...
+
+- Supports the usual suspects: numbers (6, -4, 3.1415), strings ("hello world")
+
+- Case-insensitive
+
+- We piggyback on the Scheme parser. This gives us a number of benefits and
+  peculiarities; for example, we get comments for free, but they follow the
+  Scheme notation, e.g. ";" until end of line. We get other things for free as
+  well, like hex syntax.
+
+- Parentheses are used to QUOTE things. Anything inside a list will NOT be
+  evaluated unless explicitly done so.
+
+- To evaluate the contents of a list, use EVAL; compare e.g.
+  > SHOW [+ 4 5]
+  > SHOW EVAL [+ 4 5]
+
+- Lists are also used to construct strings. To interpolate variables in a
+  list, use INTERPOLATE:
+  > MAKE :name "John"
+  > PRINT INTERPOLATE ["My name is" :name]
+
+- Logo is essentially based on early Lisp, i.e. it's a Lisp-2 with dynamic
+  scoping, with different syntax. Functions and variables have their own
+  separate namespaces.
+
+- Functions have a fixed arity (at least at the moment). The parser uses this
+  to determine the arguments for function calls. Parentheses CANNOT be used to
+  force arity or to make things clearer. :-)
+
+- Variable names start with a colon, e.g. :foo. 
+
+- Functions are defined with the TO word, which takes a name (a symbol,
+  basically), zero or more variable names (the arguments of the function), and
+  a list (the function's body). E.g.
+
+  TO SQUARE :n [
+    * :n :n
+  ]
+
+  TO is a special form. I strive to keep the number of special forms to a
+  minimum (currently there's only TO and MAKE, and the latter may become a
+  regular function).
+
+- Unlike most (I assume) other versions of Logo, Chogo has no operators; or
+  rather, things that are operators in most other languages, like '+' and '*'
+  etc, are just functions, and should be called as such. In other words, we
+  don't write ' 4 + 5 ', but rather ' + 4 5 '. Kind of like a reverse Forth...
+  :-)  I don't plan on "fixing" this.
+
+- There is no difference between () and [].
+
+
