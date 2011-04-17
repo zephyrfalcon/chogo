@@ -1,0 +1,30 @@
+;; poly.logo
+;; -*- Mode: Logo -*-
+;; Turtle Geometry, p. 15
+
+to poly :side :angle [
+   repeat forever [
+       forward :side
+       right :angle
+   ]
+]
+
+to new-poly :side :angle [
+    repeat forever [
+        forward :side
+        right :angle
+        forward :side
+        right * 2 :angle
+    ]
+]
+
+;; The 'repeat forever' is silly; let's write a version that takes a third
+;; argument, the number of iterations:
+
+to poly2 :side :angle :times [
+   repeat :times [
+       forward :side
+       right :angle
+   ]
+]
+
