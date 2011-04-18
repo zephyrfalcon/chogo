@@ -48,6 +48,12 @@
   - maybe: PENERASE, PENREVERSE
   - SETCOLOR
 
+- Meta:
+  - A Tkinter canvas might not be the best way to draw things... every line
+    drawn is its own object, and the more the draw, the greater the "load".
+    Which is, unfortunately, noticeable on this iBook G3. Maybe I should delay
+    until I have a faster machine again. But then I'll likely develop an iPad
+    version instead... :-)
 
 - Things that won't be the same as Apple Logo:
   - SUM takes a list, not two numbers
