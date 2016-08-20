@@ -1,5 +1,12 @@
 # TODO
 
+- GENERAL GUIDELINE:
+  Right now I think that this Logo variant should be used mainly to execute
+  the examples in _Turtle_Geometry_. So if at all possible, it needs all the
+  functionality that that book's Logo has. Aside from that, we can take a
+  page or two from Apple Logo. Things like changing the pen color etc, are nice
+  but not strictly necessary for the book's code, I think.
+
 - Stuff we need soon, language-wise:
   - symbol literals? (not sure)
   - return statement (OUTPUT in Apple Logo?)
