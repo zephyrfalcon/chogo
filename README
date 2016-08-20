@@ -21,17 +21,17 @@ Very much a work in progress, but usable (if you know what you're doing ;-).
 .[!].   REQUIREMENTS
 
 - Chicken Scheme, obviously. ;-) Current version used for development
-  is 4.6.0. Other versions may or may not work.
-  See: [http://www.call-with-current-continuation.org/]
+  is 4.11.0. Other versions may or may not work.
+  See: [http://www.call-cc.org/]
 
 - Eggs:
   - miscmacros
   - args
-  - tk (if you want turtle graphics)
+  - tk (if you want turtle graphics) (which you do)
 
 - rlwrap (optional, but useful if you want a readline-enabled REPL)
   See: [http://utopia.knoware.nl/~hlub/rlwrap/]
-
+  (or on OS X with Homebrew, "brew install rlwrap")
 
 .[!].   RATIONALE
 
