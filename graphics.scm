@@ -3,7 +3,14 @@
 (use tk)
 
 (define (init-graphics)
-  (start-tk))
+  (start-tk)
+  (tk/wm 'title tk "chogo")
+  ;; the following brings the Tk window to the top (but it won't stay there
+  ;; if you click on other windows)
+  ;; also see: http://stackoverflow.com/a/28312609/27426
+  (tk/raise tk)
+  (tk#eval-wish "wm attributes . -topmost 1")
+  (tk#eval-wish "wm attributes . -topmost 0"))
 
 ;; for now, there's only one canvas, which can be accessed globally.
 (define *canvas* #f)
