@@ -6,6 +6,7 @@
 (case-sensitive #f)
 
 (use srfi-1)
+(use args)
 (load "namespace")
 (load "tools")
 (load "builtins")
@@ -231,9 +232,26 @@
              (fenv (logo-state-function-env state)))
         (logo-eval-exprs sexps env fenv)))))
 
-(define (main args)
-  (if (null? args)
-      ;; no arguments? enter interactive mode
-      (logo-repl)
-      ;; otherwise, execute files specified
-      (for-each read-and-eval-file args)))
+(define opts
+  (list (args:make-option (c code) (required: "CODE")
+                          "Execute code (after loading of other files)")
+        (args:make-option (h help) #:none "Display this text" (usage))))
+
+(define (usage)
+  (with-output-to-port (current-error-port)
+    (lambda ()
+      (print "Usage: chogo [options] [files]")
+      (newline)
+      (print (args:usage opts))))
+  (exit 1))
+
+(define (main _)
+  (receive (options operands)
+      (args:parse (command-line-arguments) opts)
+    (printf "~s~n" options)
+    (printf "~s~n" operands)
+    (if (null? operands)
+        ;; no arguments? enter interactive mode
+        (logo-repl)
+        ;; otherwise, execute files specified
+        (for-each read-and-eval-file operands))))
