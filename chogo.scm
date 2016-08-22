@@ -248,10 +248,17 @@
 (define (main _)
   (receive (options operands)
       (args:parse (command-line-arguments) opts)
-    (printf "~s~n" options)
-    (printf "~s~n" operands)
+    ;;(printf "~s~n" options)
+    ;;(printf "~s~n" operands)
     (if (null? operands)
         ;; no arguments? enter interactive mode
         (logo-repl)
         ;; otherwise, execute files specified
-        (for-each read-and-eval-file operands))))
+        (begin
+          (for-each read-and-eval-file operands)
+          (let* ((state (setup-logo-state))
+                 (env (logo-state-toplevel-env state))
+                 (fenv (logo-state-function-env state))
+                 (code (alist-ref 'code options)))
+            (when code
+              (logo-eval-string code env fenv)))))))
