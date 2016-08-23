@@ -37,6 +37,15 @@
 (define (turtle-backward turtle distance)
   (turtle-forward turtle (- distance)))
 
+;; move the turtle to the given target (a point (x y)).
+;; if the pen is down, draw a line from the current position to the new one.
+(define (turtle-go turtle target)
+  (when (turtle-pen-down? turtle)
+    (let ((pos (turtle-position turtle)))
+      (draw-line *canvas* pos target
+                 (turtle-color *turtle*) (turtle-width *turtle*))))
+  (turtle-position-set! turtle target))
+
 ;; TODO: turtle-go : go to a given point directly
 ;; TODO: turtle-toward : turn toward the given point
 ;; TODO: turtle-distance : distance between turtle and the given point
