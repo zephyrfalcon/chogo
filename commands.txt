@@ -13,6 +13,10 @@ PENDOWN
 PENWIDTH :width
     Set the line drawn by the turtle to :width pixels thick.
 
+PENCOLOR :color
+    Set the line color. This is a string with a color name recognized by Tk
+    (e.g. "black"), or an RGB value of the form "#RRGGBB", e.g. "#808000".
+
 FORWARD :distance
 BACKWARD :distance
     Move the turtle for the given distance. These functions can be abbreviated
@@ -22,6 +26,10 @@ LEFT :angle
 RIGHT :angle
     Change the direction the turtle is facing, by turning it left or right by
     the specified number of degrees. Can be abbreviated as LT and RT.
+
+SETXY :x :y
+    Move the turtle to position (x, y) (using Cartesian coordinates). If the
+    pen is down, a line will be drawn, much like with FORWARD/BACKWARD.
 
 KEEP-OPEN
     When the program is done, keep the canvas window open.
